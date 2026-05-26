@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Getter
 @Builder
-public class SunCategoryResponse {
+public class SubCategoryResponse {
     private UUID id;
     private String name;
     private String description;
