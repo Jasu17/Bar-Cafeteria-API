@@ -8,6 +8,8 @@ import com.barcafe.product.entity.SubCategory;
 import com.barcafe.product.repository.CategoryRepository;
 import com.barcafe.product.repository.ProductRepository;
 import com.barcafe.product.repository.SubCategoryRepository;
+import com.barcafe.ingredient.entity.Ingredient;
+import com.barcafe.ingredient.repository.IngredientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,7 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
     private final SubCategoryRepository subCategoryRepository;
+    private final IngredientRepository ingredientRepository;
 
     public List<ProductResponse> findAll() {
         return productRepository.findAllByDeletedFalse()
@@ -108,6 +111,19 @@ public class ProductService {
 
         product.setDeleted(true);
         productRepository.save(product);
+    }
+
+    public ProductResponse addIngredients(UUID productId, List<UUID> ingredientIds) {
+        Product product = productRepository.findByIdAndDeletedFalse(productId)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+
+        List<Ingredient> ingredients = ingredientIds.stream()
+                .map(id -> ingredientRepository.findByIdAndDeletedFalse(id)
+                        .orElseThrow(() -> new RuntimeException("Ingrediente no encontrado: " + id)))
+                .collect(Collectors.toList());
+
+        product.getIngredients().addAll(ingredients);
+        return toResponse(productRepository.save(product));
     }
 
     private ProductResponse toResponse(Product product) {

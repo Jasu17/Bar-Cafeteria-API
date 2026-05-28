@@ -67,4 +67,11 @@ public class ProductController {
         productService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PatchMapping("/{id}/ingredients")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<ProductResponse> addIngredients(@PathVariable UUID id,
+                                                          @RequestBody List<UUID> ingredientIds) {
+        return ResponseEntity.ok(productService.addIngredients(id, ingredientIds));
+    }
 }
