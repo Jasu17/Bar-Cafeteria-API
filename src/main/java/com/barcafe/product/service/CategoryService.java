@@ -32,7 +32,7 @@ public class CategoryService {
     }
 
     public CategoryResponse create(CategoryRequest request){
-        if(categoryRepository.existByNameAndDeletedFalse(request.getName())){
+        if(categoryRepository.existsByNameAndDeletedFalse(request.getName())){
             throw new RuntimeException("Ya existe una categoría con ese nombre");
         }
 
