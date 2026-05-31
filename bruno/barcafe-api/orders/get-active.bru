@@ -1,0 +1,20 @@
+meta {
+  name: get-active
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api/orders/active
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

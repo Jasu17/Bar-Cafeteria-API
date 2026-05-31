@@ -25,3 +25,6 @@ Thumbs.db
 
 # Spring
 application-local.properties
+
+# Bruno environments (contienen tokens)
+bruno/barcafe-api/environments/local.bru

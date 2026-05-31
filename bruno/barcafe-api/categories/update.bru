@@ -1,0 +1,27 @@
+meta {
+  name: update
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{baseUrl}}/api/categories/{{categoryId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "Bebidas Calientes Actualizado",
+    "description": "Nueva descripción"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

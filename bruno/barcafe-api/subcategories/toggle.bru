@@ -1,0 +1,20 @@
+meta {
+  name: toggle
+  type: http
+  seq: 6
+}
+
+patch {
+  url: {{baseUrl}}/api/subcategories/{{subcategoryId}}/toggle
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

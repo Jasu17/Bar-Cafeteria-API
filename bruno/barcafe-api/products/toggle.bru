@@ -1,0 +1,20 @@
+meta {
+  name: toggle
+  type: http
+  seq: 7
+}
+
+patch {
+  url: {{baseUrl}}/api/products/{{productId}}/toggle
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,36 @@
+meta {
+  name: create
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/api/products
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "Café Latte",
+    "description": "Café con leche espumada",
+    "price": 5000,
+    "temperature": "HOT",
+    "categoryId": "{{categoryId}}",
+    "subCategoryId": "{{subcategoryId}}"
+  }
+}
+
+script:post-response {
+  const id = res.body.id;
+  bru.setEnvVar("productId", id);
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

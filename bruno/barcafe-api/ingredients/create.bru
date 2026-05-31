@@ -1,0 +1,32 @@
+meta {
+  name: create
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/ingredients
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "Leche",
+    "description": "Leche entera"
+  }
+}
+
+script:post-response {
+  const id = res.body.id;
+  bru.setEnvVar("ingredientId", id);
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

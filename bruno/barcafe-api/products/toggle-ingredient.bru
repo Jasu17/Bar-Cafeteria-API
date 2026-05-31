@@ -1,0 +1,26 @@
+meta {
+  name: toggle-ingredient
+  type: http
+  seq: 8
+}
+
+patch {
+  url: {{baseUrl}}/api/products/{{productId}}/ingredients
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  [
+    "{{ingredientId}}"
+  ]
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

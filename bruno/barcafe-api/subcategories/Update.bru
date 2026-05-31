@@ -1,0 +1,28 @@
+meta {
+  name: Update
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/api/subcategories/{{subcategoryId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "Cafés act",
+    "description": "Nuevas Variedades de café",
+    "categoryId": "{{categoryId}}"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,20 @@
+meta {
+  name: get-my
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api/orders/my
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

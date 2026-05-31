@@ -1,0 +1,31 @@
+meta {
+  name: Update
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{baseUrl}}/api/products/{{productId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "Café Latte act",
+    "description": "Café con leche espumada act",
+    "price": 5500,
+    "temperature": "HOT",
+    "categoryId": "{{categoryId}}",
+    "subCategoryId": "{{subcategoryId}}"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

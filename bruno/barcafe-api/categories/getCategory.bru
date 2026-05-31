@@ -1,0 +1,20 @@
+meta {
+  name: getCategory
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/api/categories/{{categoryId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
