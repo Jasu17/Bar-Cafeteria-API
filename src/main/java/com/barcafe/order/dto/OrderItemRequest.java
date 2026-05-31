@@ -12,7 +12,7 @@ import java.util.UUID;
 public class OrderItemRequest {
 
     @NotNull(message = "El producto es obligatorio")
-    private UUID productID;
+    private UUID productId;
 
     @Min(value = 1, message = "La cantidad mínima es 1")
     private int quantity;
